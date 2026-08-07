@@ -2,17 +2,18 @@
 
 **Student Name:** Jamaica Mae N. Malaki  
 **Course, Yr. & Sec.:** BSIT 3-B  
-**Subject Name:** System Integration and Architecture
+**Subject Name:** System Integration and Architecture / Application Development
 
 ## Description of the Repository
 
-This repository contains compiled laboratory activities, system exercises, and project outputs created for System Integration and Architecture. The included works focus on Laravel development, routing, controllers, Blade templating, database integration, CRUD operations, form handling, validation, API concepts, and system documentation. The repository also includes a Laravel-based Blood Bank Management System project that demonstrates role-based workflows, database management, and system design documentation.
+This repository contains compiled laboratory activities, system exercises, and project outputs created for System Integration and Architecture, and Application Development. The included works focus on Laravel development, routing, controllers, Blade templating, database integration, CRUD operations, form handling, validation, API concepts, and system documentation. The repository also includes a Laravel-based Blood Bank Management System project that demonstrates role-based workflows, database management, and system design documentation.
 
 ## Activities Included
 
 ### **Activity 1 - System Planning and Emerging Technology Exploration**
 
 This activity introduces system planning and technology exploration as part of understanding how modern information systems are designed. It focuses on identifying a system idea, understanding its purpose, recognizing possible users, and explaining how technology can support real-world processes. This activity helped build a foundation for analyzing systems before development.
+https://drive.google.com/file/d/1wYmoiTOSlSWkscu52QAIHHpeOiV8tzA8/view?usp=drive_link
 
 ### **Activity 2 - Laravel Mini System**
 
