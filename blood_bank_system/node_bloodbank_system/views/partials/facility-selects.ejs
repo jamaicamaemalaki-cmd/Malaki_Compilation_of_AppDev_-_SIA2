@@ -1,0 +1,55 @@
+<div class="col-md-6">
+  <label class="form-label"><%= typeof categoryLabel !== 'undefined' ? categoryLabel : 'Facility Category' %></label>
+  <select class="form-select facility-category-select" name="facility_category" required>
+    <option value="">Choose category</option>
+    <% Object.keys(facilities).forEach((category) => { %>
+      <option value="<%= category %>" <%= formData.facility_category === category ? 'selected' : '' %>><%= category %></option>
+    <% }) %>
+  </select>
+</div>
+<div class="col-md-6">
+  <label class="form-label"><%= typeof facilityLabel !== 'undefined' ? facilityLabel : 'Facility Name' %></label>
+  <select class="form-select facility-name-select" name="facility_name" required data-selected="<%= formData.facility_name || '' %>">
+    <option value="">Choose facility</option>
+    <% Object.entries(facilities).forEach(([category, names]) => { %>
+      <% names.forEach((name) => { %>
+        <option value="<%= name %>" data-category="<%= category %>" <%= formData.facility_name === name ? 'selected' : '' %>><%= name %></option>
+      <% }) %>
+    <% }) %>
+  </select>
+</div>
+
+<script>
+  function initFacilityCategoryFilter(form) {
+    const categorySelect = form.querySelector('.facility-category-select');
+    const facilitySelect = form.querySelector('.facility-name-select');
+    if (!categorySelect || !facilitySelect || facilitySelect.dataset.ready === '1') return;
+
+    const selectedValue = facilitySelect.dataset.selected || facilitySelect.value;
+    const options = Array.from(facilitySelect.querySelectorAll('option[data-category]')).map((option) => option.cloneNode(true));
+    facilitySelect.dataset.ready = '1';
+
+    function filterFacilities() {
+      const category = categorySelect.value;
+      const currentValue = facilitySelect.value || selectedValue;
+      facilitySelect.innerHTML = '<option value="">Choose facility</option>';
+
+      options
+        .filter((option) => option.dataset.category === category)
+        .forEach((option) => facilitySelect.appendChild(option.cloneNode(true)));
+
+      const stillValid = Array.from(facilitySelect.options).some((option) => option.value === currentValue && option.value !== '');
+      facilitySelect.value = stillValid ? currentValue : '';
+    }
+
+    categorySelect.addEventListener('change', () => {
+      facilitySelect.dataset.selected = '';
+      filterFacilities();
+    });
+    filterFacilities();
+  }
+
+  document.querySelectorAll('form').forEach((form) => {
+    if (form.querySelector('.facility-category-select')) initFacilityCategoryFilter(form);
+  });
+</script>

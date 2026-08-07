@@ -1,0 +1,5 @@
+<h1 class="h3 mb-3">Inventory for <%= facility.facility_name %></h1>
+<form class="surface" method="post" action="/facility/inventory">
+  <div class="table-responsive"><table class="table align-middle"><thead><tr><th>Blood Type</th><% components.forEach((component) => { %><th><%= component %></th><% }) %></tr></thead><tbody><% bloodTypes.forEach((type) => { %><tr><th><span class="badge text-bg-danger"><%= type %></span></th><% components.forEach((component) => { const key = type + '|' + component; %><td><div class="small text-muted mb-1">Current: <%= unitsByType[type][component] %></div><input class="form-control" type="number" min="0" name="add_units[<%= key %>]" placeholder="Add units"></td><% }) %></tr><% }) %></tbody></table></div>
+  <button class="btn btn-danger">Save Availability</button>
+</form>

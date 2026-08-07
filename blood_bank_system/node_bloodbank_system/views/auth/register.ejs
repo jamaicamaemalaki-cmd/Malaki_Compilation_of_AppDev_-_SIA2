@@ -1,0 +1,88 @@
+<% const pageTitle = role === 'facility' ? 'Medical Facility Registration' : role === 'admin' ? 'Admin Registration' : 'Donor Registration'; %>
+<div class="soft-card p-4 p-md-5">
+  <div class="text-center mb-4">
+    <i class="bi bi-droplet-fill fs-2 text-danger"></i>
+    <h1><%= pageTitle %></h1>
+  </div>
+  <form method="post" action="/register/<%= role %>">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label"><%= role === 'facility' ? 'Contact Person Name' : 'Full Name' %></label>
+        <input class="form-control" name="name" value="<%= formData.name || '' %>" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Email</label>
+        <input class="form-control" type="email" name="email" value="<%= formData.email || '' %>" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Password</label>
+        <div class="input-group">
+          <input id="registerPassword" class="form-control" type="password" name="password" minlength="6" required>
+          <button class="btn btn-outline-danger" type="button" data-toggle-password="#registerPassword"><i class="bi bi-eye"></i></button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Phone</label>
+        <input class="form-control" name="phone" value="<%= formData.phone || '' %>">
+      </div>
+      <div class="col-md-12">
+        <label class="form-label">Address</label>
+        <input class="form-control" name="address" value="<%= formData.address || '' %>">
+      </div>
+    </div>
+
+    <% if (role === 'facility') { %>
+      <h2 class="h4 section-title mt-5">Medical Facility Details</h2>
+      <div class="row g-3">
+        <%- include('../partials/facility-selects', { facilities, formData, categoryLabel: 'Facility Category', facilityLabel: 'Hinunangan Facility' }) %>
+        <div class="col-md-4">
+          <label class="form-label">License Number</label>
+          <input class="form-control" name="license_number" value="<%= formData.license_number || '' %>">
+        </div>
+      </div>
+    <% } %>
+
+    <% if (role === 'donor') { %>
+      <h2 class="h4 section-title mt-5">Donor Declaration</h2>
+      <div class="soft-card p-3 mb-3">
+        <p class="fw-bold">I understand that I should not donate blood if:</p>
+        <ol class="mb-4">
+          <li>I consume illegal drugs.</li>
+          <li>I have HIV/AIDS, Hepatitis B or C, Syphilis, or other sexually transmitted infections.</li>
+          <li>I am currently sick or medically unfit to donate.</li>
+        </ol>
+        <p class="fw-bold">I understand that donation depends on facility screening and medical approval.</p>
+      </div>
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label class="form-label">Blood Type</label>
+          <select class="form-select" name="blood_type" required>
+            <% bloodTypes.forEach((type) => { %><option value="<%= type %>" <%= formData.blood_type === type ? 'selected' : '' %>><%= type %></option><% }) %>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Age</label>
+          <input class="form-control" type="number" name="age" min="18" max="65" value="<%= formData.age || '' %>" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Gender</label>
+          <select class="form-select" name="gender" required>
+            <% ['Female', 'Male', 'Prefer not to say'].forEach((gender) => { %>
+              <option value="<%= gender %>" <%= formData.gender === gender ? 'selected' : '' %>><%= gender %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Weight (kg)</label>
+          <input class="form-control" type="number" step="0.01" name="weight" min="40" value="<%= formData.weight || '' %>">
+        </div>
+      </div>
+      <div class="form-check mt-3">
+        <input class="form-check-input" type="checkbox" name="declaration_confirmed" value="1" required>
+        <label class="form-check-label">I confirm that I read and comply with the donor declaration.</label>
+      </div>
+    <% } %>
+
+    <button class="btn btn-danger btn-lg w-100 mt-4">Create Account</button>
+  </form>
+</div>

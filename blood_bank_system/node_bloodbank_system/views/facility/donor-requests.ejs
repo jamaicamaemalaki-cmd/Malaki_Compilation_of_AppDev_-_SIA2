@@ -1,0 +1,62 @@
+<h1 class="h3 mb-3">Donor Requests</h1>
+<% const groups = [['Pending', pendingRequests], ['Approved', scheduledRequests], ['Rejected', rejectedRequests]]; %>
+<% groups.forEach(([label, rows]) => { %>
+  <div class="surface mb-4">
+    <h2 class="h5"><%= label %></h2>
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th>Donor</th>
+            <th>Blood</th>
+            <th>Units</th>
+            <th>Status</th>
+            <th>Schedule</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% rows.forEach((r) => { %>
+            <%
+              const scheduleDate = r.scheduled_date ? new Date(r.scheduled_date).toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' }) : '';
+              const scheduleTime = r.start_time && r.end_time ? r.start_time + ' - ' + r.end_time : '';
+              const scheduleText = [scheduleDate, scheduleTime].filter(Boolean).join(' ');
+            %>
+            <tr>
+              <td><%= r.donor_name %><br><small class="text-muted"><%= r.donor_email %></small></td>
+              <td><%= r.blood_type %> <%= r.component %></td>
+              <td><%= r.units %></td>
+              <td><%= r.status %></td>
+              <td>
+                <% if (scheduleText) { %>
+                  <%= scheduleText %>
+                  <% if (r.facility_note) { %><br><small class="text-muted"><%= r.facility_note %></small><% } %>
+                <% } else { %>
+                  <span class="text-muted">No schedule set</span>
+                <% } %>
+              </td>
+              <td>
+                <% if (r.status === 'pending') { %>
+                  <form class="request-action" method="post" action="/facility/donor-requests/<%= r.id %>?_method=PATCH">
+                    <select class="form-select form-select-sm" name="status">
+                      <option value="approved">approved</option>
+                      <option value="rejected">rejected</option>
+                    </select>
+                    <input class="form-control form-control-sm" type="date" name="scheduled_date">
+                    <input class="form-control form-control-sm" type="time" name="start_time">
+                    <input class="form-control form-control-sm" type="time" name="end_time">
+                    <input class="form-control form-control-sm" name="facility_note" placeholder="Note">
+                    <button class="btn btn-sm btn-danger">Save</button>
+                  </form>
+                <% } else { %>
+                  <span class="text-muted">Final</span>
+                <% } %>
+              </td>
+            </tr>
+          <% }) %>
+          <% if (!rows.length) { %><tr><td colspan="6" class="text-center text-muted">No records.</td></tr><% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% }) %>

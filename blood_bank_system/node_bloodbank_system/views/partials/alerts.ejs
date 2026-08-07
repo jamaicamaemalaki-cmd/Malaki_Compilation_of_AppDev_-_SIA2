@@ -1,0 +1,14 @@
+<%
+  const successMessages = typeof success !== 'undefined' ? success : [];
+  const errorMessages = typeof error !== 'undefined' ? error : [];
+  const validationMessages = typeof validationErrors !== 'undefined' ? validationErrors : [];
+%>
+<% if (successMessages.length) { %>
+  <% successMessages.forEach((message) => { %><div class="alert alert-success"><%= message %></div><% }) %>
+<% } %>
+<% if (errorMessages.length) { %>
+  <% errorMessages.forEach((message) => { %><div class="alert alert-danger"><%= message %></div><% }) %>
+<% } %>
+<% if (validationMessages.length) { %>
+  <div class="alert alert-danger"><ul class="mb-0"><% validationMessages.forEach((message) => { %><li><%= message %></li><% }) %></ul></div>
+<% } %>

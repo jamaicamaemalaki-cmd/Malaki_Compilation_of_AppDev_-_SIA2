@@ -1,0 +1,9 @@
+<h1 class="h3 mb-3">Reports</h1>
+<div class="row g-4">
+  <div class="col-lg-6"><div class="surface"><h2 class="h5">Users by Month</h2><div class="chart-bars"><% usersChartData.forEach((value, index) => { %><div><span style="height:<%= Math.max(8, value * 14) %>px"></span><small><%= index + 1 %></small></div><% }) %></div></div></div>
+  <div class="col-lg-6"><div class="surface"><h2 class="h5">Requests by Month</h2><div class="chart-bars"><% requestsChartData.forEach((value, index) => { %><div><span style="height:<%= Math.max(8, value * 14) %>px"></span><small><%= index + 1 %></small></div><% }) %></div></div></div>
+  <div class="col-lg-6"><div class="surface"><h2 class="h5">Registered Donors</h2><ul class="list-group list-group-flush"><% donors.forEach((d) => { %><li class="list-group-item px-0"><strong><%= d.name %></strong> - <%= d.blood_type %></li><% }) %><% if (!donors.length) { %><li class="list-group-item px-0 text-muted">No donors.</li><% } %></ul></div></div>
+  <div class="col-lg-6"><div class="surface"><h2 class="h5">Facilities</h2><ul class="list-group list-group-flush"><% facilities.forEach((f) => { %><li class="list-group-item px-0"><strong><%= f.facility_name %></strong><br><span class="text-muted"><%= f.facility_category %></span></li><% }) %><% if (!facilities.length) { %><li class="list-group-item px-0 text-muted">No facilities.</li><% } %></ul></div></div>
+  <div class="col-lg-6"><div class="surface"><h2 class="h5">Inventory Snapshot</h2><%- include('../partials/inventory-list', { inventories: inventory }) %></div></div>
+  <div class="col-lg-6"><div class="surface"><h2 class="h5">Donations</h2><ul class="list-group list-group-flush"><% donations.forEach((d) => { %><li class="list-group-item px-0"><strong><%= d.donor_name %></strong> - <%= d.blood_type %>, <%= d.units %> unit(s)</li><% }) %><% if (!donations.length) { %><li class="list-group-item px-0 text-muted">No donations.</li><% } %></ul></div></div>
+</div>

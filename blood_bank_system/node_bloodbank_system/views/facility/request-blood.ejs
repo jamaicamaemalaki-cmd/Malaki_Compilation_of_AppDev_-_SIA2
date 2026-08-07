@@ -1,0 +1,12 @@
+<h1 class="h3 mb-3">Request Blood</h1>
+<form class="soft-card p-4" method="post" action="/facility/request-blood">
+  <div class="row g-3">
+    <%- include('../partials/facility-selects', { facilities, formData, categoryLabel: 'Facility Category', facilityLabel: 'Facility Name' }) %>
+    <div class="col-md-3"><label class="form-label">Blood Type</label><select class="form-select" name="blood_type" required><% bloodTypes.forEach((t) => { %><option value="<%= t %>" <%= formData.blood_type === t ? 'selected' : '' %>><%= t %></option><% }) %></select></div>
+    <div class="col-md-3"><label class="form-label">Component</label><select class="form-select" name="component" required><% components.forEach((c) => { %><option value="<%= c %>" <%= formData.component === c ? 'selected' : '' %>><%= c %></option><% }) %></select></div>
+    <div class="col-md-3"><label class="form-label">Units</label><input class="form-control" type="number" name="units" min="1" value="<%= formData.units || 1 %>" required></div>
+    <div class="col-md-3"><label class="form-label">Urgency</label><select class="form-select" name="urgency"><% ['low','medium','high','critical'].forEach((u) => { %><option value="<%= u %>" <%= formData.urgency === u ? 'selected' : '' %>><%= u %></option><% }) %></select></div>
+    <div class="col-12"><label class="form-label">Reason</label><textarea class="form-control" name="reason"><%= formData.reason || '' %></textarea></div>
+  </div>
+  <button class="btn btn-danger btn-lg mt-4">Send Request</button>
+</form>

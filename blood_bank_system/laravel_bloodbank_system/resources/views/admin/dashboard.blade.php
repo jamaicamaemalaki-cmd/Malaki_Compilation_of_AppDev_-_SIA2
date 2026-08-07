@@ -1,0 +1,34 @@
+@extends('layouts.app')
+@section('title', 'Admin Dashboard | BloodLink')
+@section('content')
+<h1>Admin Dashboard</h1>
+<p class="lead text-secondary">Monitoring only — view system activity. Facilities manage request approvals and releases.</p>
+<div class="row g-3 my-3">
+    @foreach([['Users',$users],['Donors',$donors],['Facilities',$facilities],['Units Available',$inventoryUnits],['Pending Requests',$pendingRequests]] as [$label,$value])
+        <div class="col-md">
+            <div class="soft-card p-4"><div class="text-secondary fw-bold">{{ $label }}</div><div class="stat">{{ $value }}</div></div>
+        </div>
+    @endforeach
+</div>
+@if($lowStocks->count())
+    <div class="alert alert-warning"><strong>Low stock alert:</strong> {{ $lowStocks->pluck('blood_type')->join(', ') }} need monitoring.</div>
+@endif
+<div class="row g-4">
+    <div class="col-lg-7">
+        <div class="soft-card p-4">
+            <h2 class="h4">Recent Blood Requests</h2>
+            @include('partials.requests-table', ['requests' => $requests, 'showDestination' => true])
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="soft-card p-4">
+            <h2 class="h4">Recent Donations</h2>
+            @forelse($donations as $donation)
+                <div class="border-bottom py-2">{{ $donation->blood_type }} {{ $donation->component }} - {{ $donation->units }} unit(s)</div>
+            @empty
+                <p class="text-secondary mb-0">No completed donations yet.</p>
+            @endforelse
+        </div>
+    </div>
+</div>
+@endsection

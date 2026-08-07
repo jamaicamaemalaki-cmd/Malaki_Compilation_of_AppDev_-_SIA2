@@ -1,0 +1,47 @@
+<%
+  const user = typeof currentUser !== 'undefined' ? currentUser : null;
+  const incomingBloodCount = typeof incomingBloodRequestCount !== 'undefined' ? incomingBloodRequestCount : 0;
+  const pendingDonorCount = typeof pendingDonorRequestCount !== 'undefined' ? pendingDonorRequestCount : 0;
+  const isHomeScreen = typeof title !== 'undefined' && title === 'BloodLink';
+  const isLoginScreen = typeof onLoginPage !== 'undefined' && onLoginPage;
+%>
+<nav class="navbar navbar-expand-lg navbar-dark py-3">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-3 fw-bold fs-3" href="/">
+      <span class="brand-mark"><i class="bi bi-droplet-fill"></i></span> BloodLink
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <div class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <% if (!(isHomeScreen && !user)) { %>
+          <a class="nav-link" href="/availability">Availability</a>
+        <% } %>
+        <% if (isLoginScreen) { %>
+          <a class="btn btn-light text-danger fw-bold" href="/register">Register</a>
+        <% } %>
+        <% if (user && user.role === 'donor') { %>
+          <a class="nav-link" href="/donor/request">Donate</a>
+        <% } %>
+        <% if (user && user.role === 'facility') { %>
+          <a class="nav-link" href="/facility/request-blood">Request Blood</a>
+          <a class="nav-link" href="/facility/requests">Facility Requests <% if (incomingBloodCount > 0) { %><span class="badge-notify"><%= incomingBloodCount %></span><% } %></a>
+          <a class="nav-link" href="/facility/donor-requests">Donor Requests <% if (pendingDonorCount > 0) { %><span class="badge-notify"><%= pendingDonorCount %></span><% } %></a>
+          <a class="nav-link" href="/facility/inventory">Inventory</a>
+        <% } %>
+        <% if (user && user.role === 'admin') { %>
+          <a class="nav-link" href="/admin/requests">Monitor Requests</a>
+          <a class="nav-link" href="/admin/reports">Reports</a>
+        <% } %>
+        <% if (user && !isLoginScreen) { %>
+          <a class="nav-link" href="/dashboard">Dashboard</a>
+          <form method="post" action="/logout"><button class="btn btn-light text-danger fw-bold">Logout</button></form>
+        <% } else if (!user && !isLoginScreen) { %>
+          <a class="nav-link" href="/login">Login</a>
+          <a class="btn btn-light text-danger fw-bold" href="/register">Register</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

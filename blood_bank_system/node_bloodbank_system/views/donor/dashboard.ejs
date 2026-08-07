@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+  <div><h1>Donor Dashboard</h1><p class="lead text-secondary">Donate blood and monitor your request status.</p></div>
+  <a class="btn btn-danger" href="/donor/request"><i class="bi bi-heart-pulse me-2"></i>Request Donation</a>
+</div>
+<div class="row g-4">
+  <div class="col-lg-5">
+    <div class="soft-card p-4">
+      <h2 class="h4">Your Donation Requests</h2>
+      <% if (!requests.length) { %><p class="text-secondary">No donation requests yet.</p><% } %>
+      <% requests.forEach((request) => { %>
+        <div class="border-bottom py-3">
+          <strong><%= request.facility_name %></strong>
+          <div><%= request.status.charAt(0).toUpperCase() + request.status.slice(1) %> - <%= request.blood_type %> <%= request.component %></div>
+          <% if (request.scheduled_date) { %><small class="text-secondary"><%= request.scheduled_date %> <%= request.start_time || '' %> - <%= request.end_time || '' %></small><% } %>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  <div class="col-lg-7"><div class="soft-card p-4"><h2 class="h4">Facility Blood Availability</h2><%- include('../partials/inventory-list', { inventories }) %></div></div>
+</div>
