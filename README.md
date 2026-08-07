@@ -1,59 +1,50 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Malaki Compilation of AppDev and SIA Activities
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Student Name:** Jamaica Mae N. Malaki  
+**Course, Yr. & Sec.:** BSIT 3-B  
+**Subject Name:** System Integration and Architecture
 
-## About Laravel
+## Description of the Repository
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This repository contains compiled laboratory activities, system exercises, and project outputs created for System Integration and Architecture. The included works focus on Laravel development, routing, controllers, Blade templating, database integration, CRUD operations, form handling, validation, API concepts, and system documentation. The repository also includes a Laravel-based Blood Bank Management System project that demonstrates role-based workflows, database management, and system design documentation.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Activities Included
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### **Activity 1 - System Planning and Emerging Technology Exploration**
 
-## Learning Laravel
+This activity introduces system planning and technology exploration as part of understanding how modern information systems are designed. It focuses on identifying a system idea, understanding its purpose, recognizing possible users, and explaining how technology can support real-world processes. This activity helped build a foundation for analyzing systems before development.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### **Activity 2 - Laravel Mini System**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+This activity focuses on creating a simple Laravel mini-system using routes, controllers, Blade templates, and dynamic data passing. It demonstrates how Laravel handles web requests and displays information through reusable views. The activity also introduces the basic structure of a Laravel project and how pages are connected through routes.
 
-## Laravel Sponsors
+### **Activity 3 - Laravel CRUD System with Database**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+This activity involves developing a Laravel CRUD system connected to a database. It includes creating migrations, models, controllers, and Blade views that allow users to create, read, update, and delete records. The activity demonstrates how Laravel works with database tables and how system data can be managed through a web interface.
 
-### Premium Partners
+### **Activity 4 - Laravel Form Handling and Validation**
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+This activity focuses on creating forms in Laravel and applying validation rules to user input. It includes processing submitted data through controllers, displaying validation errors, keeping old input values, and showing success messages. The activity highlights the importance of secure and accurate data entry in web systems.
 
-## Contributing
+### **Activity 5 - Laravel System Integration and API Implementation**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+This activity focuses on integrating different parts of a Laravel application into one functional system. It involves authentication, dashboard features, internal data handling, and API-related concepts. The activity demonstrates how Laravel can be used to connect system modules and organize application logic for a more complete web-based system.
 
-## Code of Conduct
+## Final System Project
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### **BloodLink Blood Bank Management System**
 
-## Security Vulnerabilities
+BloodLink is a Laravel-based Blood Bank Management System developed to manage donor registration, donation requests, medical facility blood requests, blood inventory, reports, and administrative monitoring. The system includes role-based access for donors, medical facilities, and administrators. It also demonstrates database structure design, system workflows, implementation, testing, and documentation for a complete final system project.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Repository Contents Summary
 
-## License
+- Laravel source code and project files
+- CRUD laboratory activity files
+- BloodLink Blood Bank Management System files
+- Database migrations and models
+- Blade views and route definitions
+- Documentation files and project paper outputs
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Purpose
+
+The purpose of this repository is to serve as a complete compilation of activities and project outputs for System Integration and Architecture. It shows the development progress from basic Laravel routing and templating up to database-driven system development and final project documentation.
